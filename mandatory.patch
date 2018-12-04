@@ -1,0 +1,25 @@
+--- -	2018-12-04 10:59:14.664149096 +0100
++++ mandatory.yaml	2018-12-04 10:59:01.587148959 +0100
+@@ -222,7 +222,7 @@
+               path: /healthz
+               port: 10254
+               scheme: HTTP
+-            initialDelaySeconds: 10
++            initialDelaySeconds: 60
+             periodSeconds: 10
+             successThreshold: 1
+             timeoutSeconds: 1
+@@ -235,6 +235,13 @@
+             periodSeconds: 10
+             successThreshold: 1
+             timeoutSeconds: 1
++          resources:
++            requests:
++              cpu: "1000m"
++              memory: "256Mi"
++            limits:
++              cpu: "1000m"
++              memory: "256Mi"
+ 
+ ---
+ 
