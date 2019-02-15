@@ -1,6 +1,23 @@
---- -	2019-02-15 16:36:50.136147745 +0100
-+++ mandatory.yaml	2019-02-15 16:36:29.765212355 +0100
-@@ -248,7 +248,7 @@
+--- -	2019-02-15 16:43:23.523997623 +0100
++++ mandatory.yaml	2019-02-15 16:43:05.762805373 +0100
+@@ -16,6 +16,8 @@
+   labels:
+     app.kubernetes.io/name: ingress-nginx
+     app.kubernetes.io/part-of: ingress-nginx
++data:
++  custom-http-errors: 404,503
+ 
+ ---
+ kind: ConfigMap
+@@ -219,6 +221,7 @@
+             - --udp-services-configmap=$(POD_NAMESPACE)/udp-services
+             - --publish-service=$(POD_NAMESPACE)/ingress-nginx
+             - --annotations-prefix=nginx.ingress.kubernetes.io
++            - --default-backend=custom-backend
+           securityContext:
+             allowPrivilegeEscalation: true
+             capabilities:
+@@ -248,7 +251,7 @@
                path: /healthz
                port: 10254
                scheme: HTTP
@@ -9,7 +26,7 @@
              periodSeconds: 10
              successThreshold: 1
              timeoutSeconds: 10
-@@ -261,5 +261,12 @@
+@@ -261,5 +264,12 @@
              periodSeconds: 10
              successThreshold: 1
              timeoutSeconds: 10

@@ -16,6 +16,8 @@ metadata:
   labels:
     app.kubernetes.io/name: ingress-nginx
     app.kubernetes.io/part-of: ingress-nginx
+data:
+  custom-http-errors: 404,503
 
 ---
 kind: ConfigMap
@@ -219,6 +221,7 @@ spec:
             - --udp-services-configmap=$(POD_NAMESPACE)/udp-services
             - --publish-service=$(POD_NAMESPACE)/ingress-nginx
             - --annotations-prefix=nginx.ingress.kubernetes.io
+            - --default-backend-service=ingress-nginx/custom-backend
           securityContext:
             allowPrivilegeEscalation: true
             capabilities:

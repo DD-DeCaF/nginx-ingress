@@ -17,3 +17,4 @@ To update, download the newest deployment configuration, apply the patch and com
 
 * Increase livenessProbe.initialDelaySeconds from 10 to 60 as controller startup currently exceeds 10 seconds
 * Set guaranteed QoS class
+* Configure custom default backend for 404, 503 error handlers
